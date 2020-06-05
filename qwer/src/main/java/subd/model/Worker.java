@@ -8,7 +8,6 @@ public class Worker {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private Integer brigadeid;
-
     private String last_name;
     private String first_name;
     private Integer phone_number;
@@ -19,6 +18,13 @@ public class Worker {
     @ManyToOne
     private Brigade brigade;
 
+    public Worker(Integer id, Integer brigadeid, String last_name, String first_name, Integer phone_number) {
+        this.id = id;
+        this.last_name = last_name;
+        this.brigadeid = brigadeid;
+        this.first_name = first_name;
+        this.phone_number = phone_number;
+    }
 
     @Override
     public String toString(){
@@ -28,12 +34,5 @@ public class Worker {
                 "first_name=" + first_name + ",\n" +
                 "phone_number=" + phone_number + ",\n" +
                 "}" + "\n";
-    }
-
-    public void Constructor(Integer id,Integer brigadeid, String last_name, String first_name, Integer phone_number) {
-        this.last_name = last_name;
-        this.brigadeid = brigadeid;
-        this.first_name = first_name;
-        this.phone_number = phone_number;
     }
 }

@@ -12,10 +12,7 @@ public class Orders {
     private Integer id;
     private String name;
     private Integer cost;
-    private Date dataFrom;
-    private Date dataTo;
     private Timestamp date;
-
 
     @OneToMany
     private List<Materials> materials;
@@ -29,6 +26,13 @@ public class Orders {
     @ManyToOne
     private Customers customers;
 
+    public Orders(Integer id, String name, Integer cost, Timestamp date) {
+        this.id = id;
+        this.name = name;
+        this.cost = cost;
+        this.date = date;
+    }
+
     public String toString() {
         return "Orders {\n" +
                 "id =" + id + ",\n" +
@@ -36,11 +40,5 @@ public class Orders {
                 "cost=" + cost + ",\n" +
                 "dataFrom = " + date + "\n" +
                 "}" + "\n";
-    }
-
-    public void Constructor(Integer id, String name, Integer cost,Timestamp date) {
-        this.name = name;
-        this.cost = cost;
-        this.date = date;
     }
 }

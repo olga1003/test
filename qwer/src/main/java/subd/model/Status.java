@@ -13,14 +13,15 @@ public class Status  {
     @OneToMany
     private List<Orders> orders;
 
+    public Status(Integer id, String statuss) {
+        this.id = id;
+        this.status = statuss;
+    }
+
     public String toString() {
         return "Status {\n" +
                 "id =" + id + ",\n" +
                 "status=" + status + ",\n" +
                 "}" + "\n";
-    }
-
-    public void Constructor(Integer id, String statuss) {
-        this.status = statuss;
     }
 }

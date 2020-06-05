@@ -14,6 +14,11 @@ public class Position {
     @OneToMany
     private List<Worker> worker;
 
+    public Position(Integer id, String name, Integer salary) {
+        this.name = name;
+        this.salary = salary;
+    }
+
     @Override
     public String toString(){
         return "Position {\n" +
@@ -24,6 +29,7 @@ public class Position {
     }
 
     public void Constructor(Integer id, String name, Integer salary) {
+        this.id = id;
         this.name = name;
         this.salary = salary;
     }

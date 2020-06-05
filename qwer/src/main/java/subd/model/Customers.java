@@ -14,6 +14,13 @@ public class Customers {
     @OneToMany
     private List<Orders> orders;
 
+    public Customers(Integer id, String last_name, String first_name, Integer phone_number) {
+        this.id = id;
+        this.last_name = last_name;
+        this.first_name = first_name;
+        this.phone_number = phone_number;
+    }
+
     @Override
     public String toString(){
         return "Customers {\n" +
@@ -22,10 +29,5 @@ public class Customers {
                 "first_name=" + first_name + ",\n" +
                 "phone_number=" + phone_number + ",\n" +
                 "}" + "\n";
-    }
-    public void Constructor(Integer id, String last_name, String first_name, Integer phone_number) {
-        this.last_name = last_name;
-        this.first_name = first_name;
-        this.phone_number = phone_number;
     }
 }

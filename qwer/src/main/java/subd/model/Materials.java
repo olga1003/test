@@ -13,6 +13,12 @@ public class Materials {
     @ManyToOne
     private Orders orders;
 
+    public Materials(Integer id, String name, Integer cost) {
+        this.id = id;
+        this.name = name;
+        this.cost = cost;
+    }
+
     @Override
     public String toString(){
         return "Materials {\n" +
@@ -20,11 +26,5 @@ public class Materials {
                 "name=" + name + ",\n" +
                 "cost=" + cost + ",\n" +
                 "}" + "\n";
-    }
-
-    public void Constructor(Integer id, String name, Integer cost) {
-        this.name = name;
-        this.cost = cost;
-
     }
 }
