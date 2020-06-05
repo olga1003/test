@@ -1,11 +1,13 @@
 package subd.crud;
 
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
-import subd.model.Orders;
+import subd.model.*;
 import subd.repository.OrdersRepository;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 public class OrdersCrud {
     private OrdersRepository ordersRepository;
@@ -19,6 +21,10 @@ public class OrdersCrud {
         for (Orders orders : ordersRepository.findAll(PageRequest.of(0, 3, Sort.unsorted())).toList()) {
             System.out.println(orders);
         }
+    }
+    public PageableItems<Orders> findAll(int offset, int count) {
+        final Page<Orders> page = ordersRepository.findAll(new OffsetablePageRequest(offset, count));
+        return new PageableItems<>(page.getTotalElements(), page.getContent());
     }
 
     public void deleteOrders() {

@@ -1,9 +1,15 @@
 package subd.crud;
 
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import subd.model.Brigade;
+import subd.model.OffsetablePageRequest;
+import subd.model.PageableItems;
+import subd.model.Worker;
 import subd.repository.BrigadeRepository;
+import java.util.List;
+
 
 public class BrigadeCrud {
     public BrigadeRepository brigadeRepository;
@@ -26,5 +32,9 @@ public class BrigadeCrud {
     public void updateBrigade(Integer id , String name) {
         Brigade brigade = new Brigade(id, name);
         brigadeRepository.save(brigade);
+    }
+    public PageableItems<Brigade> findAll(int offset, int count) {
+        final Page<Brigade> page = brigadeRepository.findAll(new OffsetablePageRequest(offset, count));
+        return new PageableItems<>(page.getTotalElements(), page.getContent());
     }
 }

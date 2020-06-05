@@ -1,9 +1,15 @@
 package subd.crud;
 
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import subd.model.Materials;
+import subd.model.OffsetablePageRequest;
+import subd.model.PageableItems;
 import subd.model.Worker;
 import subd.repository.WorkerRepository;
+
+import java.util.List;
 
 public class WorkerCrud {
     public WorkerRepository workerRepository;
@@ -18,7 +24,10 @@ public class WorkerCrud {
             System.out.println(worker);
         }
     }
-
+    public PageableItems<Worker> findAll(int offset, int count) {
+        final Page<Worker> page = workerRepository.findAll(new OffsetablePageRequest(offset, count));
+        return new PageableItems<>(page.getTotalElements(), page.getContent());
+    }
     public void deleteOrders() {
         workerRepository.deleteById(1);
     }
